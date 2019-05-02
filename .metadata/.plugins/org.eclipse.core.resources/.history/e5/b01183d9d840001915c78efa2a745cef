@@ -1,0 +1,76 @@
+package thread_basics;
+
+public class CurrentThread_GetName_Method {
+	
+	public static void main(String[] args) {
+		
+		MyThread threadObject = new MyThread();
+		
+		Thread t1 = new Thread(threadObject, "Thread 1");  // Here, "Thread 1" is a thread name
+		
+/**      set the priority of thread ...  */
+		
+		t1.setPriority(Thread.MIN_PRIORITY);  // minimum priority = 1
+//		t1.setPriority(Thread.MAX_PRIORITY);  // maximum priority = 10
+//		t1.setPriority(Thread.NORM_PRIORITY);  // Normal Priority = 5
+//		t1.setPriority(7);  // set the priority as a integer value between 1 and 10 like 1, 2, 3, 4 ... 10 etc
+		t1.start();
+		
+		System.out.println("Read thid line Thread: "+t1.currentThread().getName());
+		System.out.println("Current Thread : "+Thread.currentThread());
+		
+		for (int i=0; i<10; i++) {
+			System.out.println("Main Thread Class");
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		System.out.println(Thread.currentThread().getName());
+		
+	}
+
+}
+
+
+class MyThread implements Runnable {
+	public void run() {
+		System.out.println("Inside the MyThread class");
+		System.out.println(Thread.currentThread());
+		for (int i=0; i<10; i++) {
+			try {
+				System.out.println("MyThread class");
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+		}
+	}
+}
+
+
+
+///  Note:->  getName() method returns a string of name of current thread
+
+/// Note:->  setPriority() method to set the thread priority
+/// 			- Thread.MAX_PRIORITY = 10
+/// 			- Thread.MIN_PRIORITY = 1
+/// 			- Thread.NORM_PRIORITY = 5
+/// 			- or user can decide the priority like 1, 2, 3, ... 10 etc   
+
+///          Note:-> If priority is N then limit of N is :-> 1<= N =>10
+
+///  Note:->  currentThread() method is a static method from Thread class
+///           That's why, Thread.currentThread() method returns a thread object
+/// 		  which is like->  Thread[ThreadName, priorityValue, ThreadGroup]
+
+///           For Example:->   
+///							Thread[Thread 1, 5, main]
+
+/// 					Here, ThreadName is -> Thread 1
+/// 						  ThreadPriority is -> 5
+///							  ThreadGroup is -> main
+

@@ -1,0 +1,9 @@
+package generics_example;
+
+public class MyClass {
+	
+	public static void main (String[] args) {
+
+	}
+
+}

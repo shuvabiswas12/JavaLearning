@@ -1,0 +1,43 @@
+package thread_basics;
+
+public class Join_Method {
+	
+	public static void main (String[] args) throws InterruptedException {
+		
+		MyThreadJoin threadObject = new MyThreadJoin();
+		threadObject.setName("t1");
+		threadObject.start();
+		
+//		Thread.sleep(1);
+		
+		threadObject.join();
+		
+		
+		
+		
+		System.out.println(threadObject.val);
+	}
+
+}
+
+
+class MyThreadJoin extends Thread {
+	
+	int val;
+	public void run() {
+		System.out.println(currentThread());
+		for (int i=0; i<100000; i++) {
+			val++;
+			
+		}		
+		
+	}
+}
+
+
+/// Note:->  join() method works until that thread doesn't finish his job fully
+
+/// threadObject.join() pause the main thread till the new thread 't1' doesn't finished his job fully 
+
+/// setName() method set the name of a thread
+

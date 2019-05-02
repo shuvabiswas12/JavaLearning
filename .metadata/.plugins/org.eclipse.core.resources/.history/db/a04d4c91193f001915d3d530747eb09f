@@ -1,0 +1,28 @@
+package thread_basics;
+
+public class Thread_Using_Anonymous_class {
+	
+	public static void main(String[] args) {
+		
+//		Runnable object = new Runnable() {
+//			public void run() {
+//				System.out.println("New Thread Executed");
+//			}
+//		};
+//		
+//		Thread thread_1 = new Thread(object);
+//		thread_1.start();
+		
+		
+		Thread thread_2 = new Thread(new Runnable() {
+			public void run() {
+				
+			}
+		});
+		
+		
+		
+		
+	}
+
+}

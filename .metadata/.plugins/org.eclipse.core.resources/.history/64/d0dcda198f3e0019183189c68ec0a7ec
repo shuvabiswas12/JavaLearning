@@ -1,0 +1,48 @@
+package thread_basics;
+
+public class RunnableThread {
+	
+	public static void main(String[] args) throws InterruptedException {
+		B b = new B();
+		
+		Thread thread_1 = new Thread(b);
+		thread_1.start();
+		
+		for (int i=0; i<10; i++) {
+			System.out.println("Main Thread - Runnable class");
+			Thread.sleep(500);
+		}
+	}
+	
+
+}
+
+
+class C {
+	void print() {
+		for (int i=0; i<10; i++) {
+			System.out.println("Inherit from Class A");
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+
+class B extends C implements Runnable {
+	
+	public void run() {
+		print();
+	}
+	
+}
+
+
+
+/// Note:- Runnable class doesn't contains start() method
+/// so, start the thread ->
+/// 1)  firstly create an object of Thread class
+/// 2)  and, pass the parameter of 
